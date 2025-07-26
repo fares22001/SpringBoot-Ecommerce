@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" th:href="@{/css/adminDashboard.css}" />
+    <link rel="stylesheet" th:href="@{/css/editproduct.css}" />
+
+    <title>AdminHub</title>
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <div th:replace="sidebar :: sidebar"></div>
+
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" placeholder="Search..." />
+            <button type="submit" class="search-btn">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden />
+        <label for="switch-mode" class="switch-mode"></label>
+      </nav>
+      <!-- NAVBAR -->
+
+      <!-- MAIN -->
+      <main>
+        <div class="head-title">
+          <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a href="#">Dashboard</a>
+              </li>
+              <li><i class="bx bx-chevron-right"></i></li>
+              <li>
+                <a class="active" href="#">products</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="table-data">
+          <div class="order">
+            <div class="head">
+              <h3>add product</h3>
+              <i class="bx bx-search"></i>
+              <i class="bx bx-filter"></i>
+              <a href="/admin/products">cancel</a>
+            </div>
+            <form
+              method="post"
+              th:object="${product}"
+              th:action="@{/admin/products/editProduct/{id}(id=${product.id})}"
+              enctype="multipart/form-data"
+            >
+              <div class="row mb-4">
+                <label class="col-sm-4 col-form-label">id</label>
+                <div class="col-sm-8">
+                  <input
+                    readonly
+                    class="form-control-plaintext"
+                    th:value="${product.id}"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label>name</label>
+                <div>
+                  <input th:field="${product.name}" />
+                  <p
+                    th:if="${#fields.hasErrors('name')} "
+                    th:errorclass="text-danger"
+                    th:errors="${product.name}"
+                  ></p>
+                </div>
+              </div>
+              <div>
+                <label>brand </label>
+                <div>
+                  <input th:field="${product.brand}" />
+                  <p
+                    th:if="${#fields.hasErrors('brand')} "
+                    th:errorclass="text-danger"
+                    th:errors="${product.brand	}"
+                  ></p>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <label class="col-sm-4 col-form-label">category</label>
+                <div class="col-sm-8">
+                  <select class="form-select" th:field="${product.category}">
+                    <option value="other">other</option>
+                    <option value="phone">phone</option>
+                    <option value="c">c</option>
+                    <option value="b">b</option>
+                    <option value="f">f</option>
+                    <option value="ff">ff</option>
+                  </select>
+                  <p
+                    th:if="${#fields.hasErrors('category')}"
+                    th:errorclass="text-danger"
+                    th:errors="${product.category}"
+                  ></p>
+                </div>
+              </div>
+              <div>
+                <label>quantity</label>
+                <div>
+                  <input th:field="${product.quantity}" />
+                  <p
+                    th:if="${#fields.hasErrors('quantity')} "
+                    th:errorclass="text-danger"
+                    th:errors="${product.quantity}"
+                  ></p>
+                </div>
+              </div>
+              <div>
+                <label>description</label>
+                <div>
+                  <input th:field="${product.description}" />
+                  <p
+                    th:if="${#fields.hasErrors('description')} "
+                    th:errorclass="text-danger"
+                    th:errors="${product.description}"
+                  ></p>
+                </div>
+              </div>
+              <div>
+                <label>price</label>
+                <div>
+                  <input th:field="${product.price}" />
+                  <p
+                    th:if="${#fields.hasErrors('price')} "
+                    th:errorclass="text-danger"
+                    th:errors="${product.price}"
+                  ></p>
+                </div>
+              </div>
+           
+              <div>
+                <label>regularDiscount</label>
+                <div>
+                  <input th:field="${product.regularDiscount}" />
+                  <p
+                    th:if="${#fields.hasErrors('regularDiscount')} "
+                    th:errorclass="text-danger"
+                    th:errors="${product.regularDiscount}"
+                  ></p>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <label class="col-sm-4 col-form-label">Image</label>
+                <div class="col-sm-8">
+                  <input
+                    type="file"
+                    id="image"
+                    name="images"
+                    accept="images/*"
+                    class="form-control-file"
+                    multiple
+                    required
+                  />
+                  <p
+                    th:if="${#fields.hasErrors('imageFileName')}"
+                    th:errorclass="text-danger"
+                    th:errors="${product.imageFileName}"
+                  ></p>
+                </div>
+                <img
+                  th:if="${product.imageFileName != null and product.imageFileName.size() > 0}"
+                  th:src="@{'/uploads/' + ${product.id} + '/' + ${product.imageFileName[0]}}"
+                  th:alt="${product.imageFileName[0]}"
+                  width="100"
+                />
+              </div>
+              <div>
+                <button type="submit">submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+    <script src="../../public/js/adminDashboard.js"></script>
+  </body>
+</html>

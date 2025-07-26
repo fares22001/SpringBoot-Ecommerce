@@ -1,0 +1,107 @@
+/* Table Customization */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+    background: var(--light);
+    color: var(--dark);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.custom-table thead {
+    background: var(--blue);
+    color: var(--light);
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--grey);
+}
+
+.custom-table th {
+    font-weight: 600;
+}
+
+.custom-table tbody tr:hover {
+    background-color: var(--light-blue);
+}
+
+.btn-action {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--light);
+}
+
+.btn-action.show {
+    background-color: var(--blue);
+}
+
+.btn-action.hide {
+    background-color: var(--red);
+}
+
+
+.btn-action.remove {
+    background-color: var(--red); 
+    color: var(--light); 
+}
+
+.btn-action.remove:hover {
+    background-color: darken(var(--red), 10%); 
+    transition: background-color 0.3s ease; /
+}
+
+.btn-action.update {
+    background-color: var(--green); /* Choose a color that represents an 'update' action */
+    color: var(--light);
+}
+
+.btn-action.update:hover {
+    background-color: darken(var(--green), 10%);
+    transition: background-color 0.3s ease;
+}
+
+/* Enhance button interactivity */
+.btn-action:focus {
+    outline: none; /* Removes the default outline to maintain the design */
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-action:active {
+    transform: translateY(2px);  
+}
+
+/* Responsive Table */
+@media screen and (max-width: 768px) {
+    .table-responsive {
+        overflow-x: auto;
+    }
+}
+
+/* Pagination Customization */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 20px 0;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pagination a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: var(--dark);
+    background: var(--light);
+    border-radius: 5px;
+    border: 1px solid var(--blue);
+}
+
+.pagination a:hover,
+.pagination a.active {
+    background: var(--blue);
+    color: var(--light);
+}

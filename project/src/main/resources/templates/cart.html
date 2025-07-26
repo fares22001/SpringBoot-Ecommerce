@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{/css/cart.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <title>In Cart Products</title>
+    <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div th:replace="~{header :: header}"></div>
+    <main>
+        <hr>
+ s
+        <div class="card-container">
+            <tr th:each="item : ${Cart}">
+                <td>
+                    <div class="card">
+                        <div class="images">
+                        
+                            <img
+                            th:if="${item.product.imageFileName != null and item.product.imageFileName.size() > 0}"
+                            th:src="@{'/uploads/' + ${item.product.id} + '/' + ${item.product.imageFileName[0]}}"
+                            th:alt="${item.product.imageFileName[0]}"
+                            width="100"
+                        />
+                        </div>
+                        <div class="caption">
+                            <p class="product_name" th:text="${item.product.name}"> </p>
+                            <p class="price"  th:text="${item.product.price + ' LE'}"><b>product price</b></p>
+                            <p class="price"  th:text="${item.quantity + '  total'}"><b>cart quantity </b></p>
+
+                            <form method="post" th:object="${Cart}" th:action="@{/updatecart/{cart_id}(cart_id=${item.cart_id})}" enctype="multipart/form-data">
+                
+                                <input type="number" name="quantity" min="1" value="${item.quantity}">
+                          
+                              <div>
+                                 <button class="add" type="submit">Add Quantity </button>
+                              </div>
+                          </form>
+                          <b>final  price</b>
+                          <p class="price"  th:text="${item.quantity == 0 ? item.product.price : item.quantity *item.product.price +'  LE'}"><b>final  price</b></p>
+
+ 
+                        </div>
+                    </div>
+                </td>    
+                <a class="remove" th:href="@{'/remove/' + ${item.cart_id}}">x</a>
+
+             </tr>
+             
+
+            </div>
+        </div>
+
+        <br>
+        <a class="Add" href="/menu">add product</a>
+
+        <a class="Add" th:href="@{/checkout}">Checkout</a>
+
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+
+    {% comment %} <script>
+        // Function to send the updated quantity to the server
+        function updateQuantity(cartItemId, newQuantity) {
+            $.ajax({
+                url: '/cart/update-quantity/' + cartItemId,
+                type: 'PUT',
+                data: JSON.stringify({ quantity: newQuantity }),
+                contentType: 'application/json',
+                success: function(response) {
+                    // Handle success response if needed
+                    console.log('Quantity updated successfully');
+                },
+                error: function(xhr, status, error) {
+                    // Handle error response if needed
+                    console.error('Error updating quantity:', error);
+                }
+            });
+        }
+
+        // Event listener for update quantity buttons
+        $(document).on('click', '.Add', function() {
+            var cartItemId = $(this).data('cart_id');
+            var newQuantity = prompt('Enter the new quantity:');
+            if (newQuantity !== null && newQuantity.trim() !== '') {
+                updateQuantity(cartItemId, parseInt(newQuantity));
+            }
+        });
+    </script> {% endcomment %}
+</body>
+
+
+</html>

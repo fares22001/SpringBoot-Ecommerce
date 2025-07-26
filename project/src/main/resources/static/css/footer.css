@@ -1,0 +1,80 @@
+/* Animated Footer Styling */
+.animated-footer {
+    background: 	#1c1c84;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    /* animation: slideIn 1s ease-in; */
+    margin-top: 50px; /* Decrease margin for better mobile display */
+    display: flex;
+    flex-direction: column; /* Change to column layout for mobile */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Center align the content */
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    flex: 1;
+    margin: 10px; /* Adjust margin for better spacing */
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px; /* Increase font size of footer links */
+}
+
+.social-icon {
+    font-size: 30px; /* Increase social icon size */
+    margin-right: 10px;
+    color: #fff;
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Change background color on hover */
+}
+
+.footer-bottom {
+    background-color:	#1c1c84; /* Darker background color for contrast */
+    color: #fff;
+    padding: 15px; /* Increased padding for better spacing */
+    font-size: 18px; /* Increased font size for better visibility */
+    border-top: 100px solid	#1c1c84; /* Add a top border for separation */
+    font-weight: bold; /* Increase font weight for emphasis */
+}
+
+.footer-bottom a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media only screen and (min-width: 768px) {
+    .animated-footer {
+        flex-direction: row; /* Revert to row layout for larger screens */
+        margin-top: 250px; /* Restore margin for larger screens */
+    }
+}

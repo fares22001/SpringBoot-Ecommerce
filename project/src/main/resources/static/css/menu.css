@@ -1,0 +1,132 @@
+/* Resetting default margin and padding */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Hide scrollbar */
+#menulist::-webkit-scrollbar {
+    display: none;
+}
+
+/* Container for menu items */
+#menubody {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0 -10px; /* Adjusting for margins */
+}
+
+/* Menu items */
+.menu_items {
+    position: relative;
+    flex: 0 0 calc(25% - 20px); /* Adjust item width for four items per row */
+    margin: 10px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    width: calc(25% - 20px); /* Set the width of each item */
+    height: 300px; /* Set the height of each item */
+}
+.menu_items:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Enhancing box shadow on hover */
+}
+
+/* Image */
+.menu_img {
+    width: 100%;
+    height: 70%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.menu_items:hover .menu_img {
+    transform: scale(1.1); /* Scaling up image on hover */
+}
+
+/* Description and Icons */
+.descr_and_add {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: transform 0.3s ease;
+    transform: translateY(100%); /* Initially hidden */
+}
+
+.menu_items:hover .descr_and_add {
+    transform: translateY(0); /* Show on hover */
+}
+
+/* Icons */
+.icons {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu_items:hover .icons {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Favorite Icons */
+.favs, .favrs {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu_items:hover .favs, .menu_items:hover .favrs {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Description Text */
+.description {
+    padding: 10px;
+}
+
+.names {
+    font-weight: bold;
+}
+
+.prices {
+    color: #333;
+}
+
+/* Hide favorite icon on hover */
+.menu_items:hover .favs, .menu_items:hover .favrs {
+    display: none;
+}
+.view {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #0fe216;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.view:hover {
+    background-color: #45a049;
+}

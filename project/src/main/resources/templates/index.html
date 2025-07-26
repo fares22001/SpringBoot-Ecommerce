@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beauty Products</title>
+  <link th:href="@{/css/index.css}" rel="stylesheet" />
+  <link th:href="@{/css/header.css}" rel="stylesheet" />
+  <link th:href="@{/css/footer.css}" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div th:replace="header :: header"></div>
+
+  <section aria-label="Newest Photos" class="slideshow">
+    <div class="carousel" data-carousel>
+      <button class="carousel-button prev" data-carousel-button="prev">
+        &#8656;
+      </button>
+      <button class="carousel-button next" data-carousel-button="next">
+        &#8658;
+      </button>
+      <ul data-slides>
+        <li class="slide" data-active>
+          <div class="slide-text">
+            <p></p>
+          </div>
+          <img th:src="@{img/homeimage6.jpg}" alt="Nature Image #2" />
+        </li>
+        <li class="slide">
+          <div class="slide-text">
+            <p>Nature's Beauty</p>
+          </div>
+          <img th:src="@{/img/cotoneve2.png}" alt="Nature Image #1" />
+        </li>
+        <li class="slide">
+          <div class="slide-text">
+            <p>Beautiful Designs</p>
+          </div>
+          <img th:src="@{/img/maxresdefault.jpg}" alt="Nature Image #3" />
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div>
+    <h1 class="feauteredproducts">feautered products</h1>
+  </div>
+
+  <div class="product-container">
+    <div class="product-card">
+      <img th:src="@{/img/thirdimg.jpg}" alt="Product 1" class="images" />
+      <h3>Silvercare brush</h3>
+      <p>
+        Silver Care System Hard Toothbrush. The head is coated with 999
+        silver, which provides activation of silver ions and a natural
+        antibacterial process during brushing of teeth upon contact with water
+      </p>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+    <div class="product-card">
+      <img th:src="@{/img/forthimg.jpeg}" alt="Product 1" class="images" />
+      <h3>Silvercare brush</h3>
+      <p>
+        Silver Care System Hard Toothbrush. The head is coated with 999
+        silver, which provides activation of silver ions and a natural
+        antibacterial process during brushing of teeth upon contact with water
+      </p>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+    <div class="product-card">
+      <img th:src="@{/img/firstbrush.jpg}" alt="Product 1" class="images" />
+      <h3>Silvercare brush</h3>
+      <p>
+        Silver Care System Hard Toothbrush. The head is coated with 999
+        silver, which provides activation of silver ions and a natural
+        antibacterial process during brushing of teeth upon contact with water
+      </p>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+
+    <div class="product-card">
+      <img th:src="@{/img/secbrush.jpg}" alt="Product 1" class="images" />
+      <h3></h3>
+      <p>
+        Silver Care System Hard Toothbrush. The head is coated with 999
+        silver, which provides activation of silver ions and a natural
+        antibacterial process during brushing of teeth upon contact with water
+      </p>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+
+    <div class="product-card">
+      <img th:src="@{/img/sens.jpg}" alt="Product 1" class="images" />
+      <h3>Silvercare brush</h3>
+      <p>
+        Silver Care System Hard Toothbrush. The head is coated with 999
+        silver, which provides activation of silver ions and a natural
+        antibacterial process during brushing of teeth upon contact with water
+      </p>
+      <a href="#" class="btn">Buy Now</a>
+    </div>
+  </div>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      Learn more about our commitment to providing high-quality beauty
+      products that enhance your natural beauty.
+    </p>
+    <a th:href="@{/}" class="btn">Read More</a>
+  </section>
+
+  <div th:replace="footer :: footer"></div>
+  <script th:src="@{js/scroll.js}"></script>
+</body>
+
+</html>

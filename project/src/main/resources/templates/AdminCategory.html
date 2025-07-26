@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/adminDashboard.css}">
+    <title>Categories</title>
+</head>
+<body>
+    <div th:replace="sidebar :: sidebar"></div>
+    <section id="content">
+        <nav>
+            <i class="bx bx-menu"></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn">
+                        <i class="bx bx-search"></i>
+                    </button>
+                </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+        </nav>
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Categories</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">Dashboard</a></li>
+                        <li><i class="bx bx-chevron-right"></i></li>
+                        <li><a class="active" href="#">Categories</a></li>
+                    </ul>
+                </div>
+                <a href="/categories/add" class="btn-download">
+                    <i class="bx bx-plus"></i>
+                    <span class="text">Add Category</span>
+                </a>
+            </div>
+            <div class="table-data">
+                <div class="order">
+                    <div class="head">
+                        <h3>Categories</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="category : ${categories}">
+                                <td th:text="${category.id}"></td>
+                                <td th:text="${category.name}"></td>
+                                <td>
+                                    <form th:action="@{/categories/delete/{id}(id=${category.id})}" method="delete">
+                                        <input type="hidden" name="_method" value="delete"/>
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this category?');">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="../../public/js/adminDashboard.js"></script>
+</body>
+</html>

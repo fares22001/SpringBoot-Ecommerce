@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Beauty Products</title>
+    <link th:href="@{/css/product_details.css}" rel="stylesheet" />
+
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <script th:src="@{js/products.js}"></script>
+  </head>
+
+  <body>
+    <div th:replace="header :: header"></div>
+
+    <form method="post" th:object="${products}" th:action="@{/admin/products/add-to-cart/{id}(id=${products.id})}" enctype="multipart/form-data">
+                
+      <input type="hidden" name="id" th:value="${products.id}" />
+
+    <div>
+       <button class="add" type="submit">add to cart </button>
+    </div>
+</form>
+    
+
+  </div>
+  
+    <div id="menubody" onclick="favorites(event.target)">
+      <div class="menu_items"  >
+        <div th:each="imageFileName : ${products.imageFileName}">
+          <img
+              height="100%"
+              th:src="@{'/uploads/' + ${products.id} + '/' + ${imageFileName}}"
+              th:alt="${imageFileName}"
+              width="100%"
+              class="menu_img"
+          />
+      </div>
+      
+
+        <div class="descr_and_add">
+          <div class="description">
+            <span class="names" th:text="${products.name}"> </span>
+          
+         
+            <br />
+            <span class="prices" th:text="${products.price + '$'}"> </span>
+          </div>
+          <p class="price" th:text="${products.name + ''}"><b>product price</b></p>
+          <p th:if="${session['User_id'] != null}">
+            <span th:text="${session['User_id']}"></span>
+        </p>
+        
+        
+          <p class="price" th:text="${products.id + 'iddddd'}"><b>product id</b></p>
+          <p class="price" th:text="${products.description + '$'}"><b>product price</b></p>
+          <p class="price" th:text="${products.brand+ '$'}"><b>product price</b></p>
+          <p class="price" th:text="${products.category + '$'}"><b>product price</b></p>
+          <span th:if="${products.quantity == 0}" style="color: red">Out of Stock</span>
+
+        
+
+        </div>
+      </div>
+    </div>
+    
+    <div th:replace="footer :: footer"></div>
+  </body>
+</html>

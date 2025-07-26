@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/adminDashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/addproduct.css}">
+    <title>Add Category</title>
+</head>
+<body>
+    <div th:replace="sidebar :: sidebar"></div>
+    <section id="content">
+        <nav>
+            <i class="bx bx-menu"></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn">
+                        <i class="bx bx-search"></i>
+                    </button>
+                </div>
+            </form>
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+        </nav>
+        <main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li><a href="#">Dashboard</a></li>
+                        <li><i class="bx bx-chevron-right"></i></li>
+                        <li><a class="active" href="#">Add Category</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-data">
+                <div class="order">
+                    <div class="head">
+                        <a href="/admin/categories">Cancel</a>
+                    </div>
+                    <form method="POST" th:object="${category}" th:action="@{/categories/add}">
+                        <div>
+                            <label>Name</label>
+                            <div>
+                                <input th:field="*{name}">
+                                <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger" th:errors="*{name}" style="color: red"></p>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </section>
+    <script src="../../public/js/adminDashboard.js"></script>
+</body>
+</html>

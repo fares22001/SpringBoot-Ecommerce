@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Login</title>
+    <link th:href="@{/css/user login.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <style>
+      .error {
+        color: red;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div th:replace="header :: header"></div>
+
+    <div class="container">
+      <b><h2>User Login</h2></b>
+      
+      <form th:action="@{/User/Login}" method="post">
+        <div>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username / Email"
+            required
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <div>
+          <b><button type="submit">Login</button></b><br /><br />
+        </div>
+
+        
+        <div class="error" th:if="${error}" th:text="${error}"></div>
+      </form>
+    </div>
+
+    <div th:replace="footer :: footer"></div>
+  </body>
+</html>

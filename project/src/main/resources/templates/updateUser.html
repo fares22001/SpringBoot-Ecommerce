@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Update User</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Add your CSS file link here -->
+    <link rel="stylesheet" th:href="@{/css/adminDashboard.css}" />
+    <link rel="stylesheet" th:href="@{/css/addUser.css}" />
+  </head>
+  <body class="bodys">
+    <div class="container">
+      <div class="header">
+        <h2>Update User</h2>
+      </div>
+      <form
+        th:action="@{'/admin/updateUser/' + ${user.id}}"
+        th:object="${user}"
+        method="post"
+        class="form"
+      >
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            th:value="*{username}"
+            required
+          />
+        </div>
+        <div class="form-control">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            th:value="*{email}"
+            required
+          />
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            th:value="*{password}"
+            required
+          />
+        </div>
+        <button type="submit" class="btn">Update User</button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+/* Form Styles */
+#content main .table-data .order form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.75;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#content main .table-data .order form label {
+    display: block;
+    margin-top: 20px;
+    color: #000000;
+    font-weight: bold;
+}
+
+#content main .table-data .order form input,
+#content main .table-data .order form select {
+    width: calc(100% - 10px);
+    height: 40px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    background-color: #f9f9f9;
+    color: #342E37;
+    border-radius: 12px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#content main .table-data .order form input::placeholder,
+#content main .table-data .order form select {
+    color: #aaaaaa;
+}
+
+#content main .table-data .order form button[type="submit"] {
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    background-color: #3C91E6;
+    color: white;
+    border-radius: 12px;
+    transition: background-color 0.3s ease;
+}
+
+#content main .table-data .order form button[type="submit"]:hover {
+    background-color: #2676C3;
+    color: #f9f9f9;
+}
+
+#content main .table-data .order form .row {
+    display: flex;
+    margin-top: 20px;
+}
+
+#content main .table-data .order form .row .col-sm-4 {
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin-right: 10px;
+}
+
+#content main .table-data .order form .row .col-sm-8 {
+    flex: 1;
+    max-width: calc(60% - 10px);
+}
+
+#content main .table-data .order form .row.mb-4 {
+    margin-bottom: 20px;
+}
+
+#content main .table-data .order form .image-upload input[type="file"] {
+    width: calc(100% - 10px);
+}
+
+#content main .table-data .order form .image-upload p {
+    margin-top: 10px;
+    font-size: 14px;
+}

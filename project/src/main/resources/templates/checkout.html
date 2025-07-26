@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link th:href="@{/css/cart.css}" rel="stylesheet" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <title>In Cart Products</title>
+    <script src="https://kit.fontawesome.com/a98ac1f71c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div th:replace="~{header :: header}"></div>
+    <main>
+        <hr>
+        <div class="card-container">
+ 
+            
+            <tr th:each="item : ${order}">
+                <td>
+                    <div class="card">
+                        <div class="images">
+                        
+                            <img
+                            th:if="${item.product.imageFileName != null and item.product.imageFileName.size() > 0}"
+                            th:src="@{'/uploads/' + ${item.product.id} + '/' + ${item.product.imageFileName[0]}}"
+                            th:alt="${item.product.imageFileName[0]}"
+                            width="100"
+                        />
+                        </div>
+                        <div class="caption">
+                            <p class="product_name" th:text="${item.product.name}"> </p>
+                            <p class="price"  th:text="${item.product.price + ' LE'}"><b>product price</b></p>
+                            <p class="price" th:text="${item.quantity == 0 ? 1 : item.quantity} + ' total'"><b>cart quantity </b></p>
+                 
+                            
+                      
+                          <b>final  price</b>
+                          <p class="price"  th:text="${item.quantity == 0 ? item.product.price : item.quantity *item.product.price +'  LE'}"><b>final  price</b></p>
+
+ 
+                        </div>
+                    </div>
+                </td>    
+ 
+             </tr>
+               
+
+            </div>
+        </div>
+
+        <br>
+
+        <button class="add" type="submit">place order </button>
+ 
+    <p>Total Price: 
+ </p>
+            <a class="Add" href="/menu">add product</a>
+
+    </main>
+    <div th:replace="~{footer :: footer}"></div>
+
+ 
+</body>
+
+
+</html>

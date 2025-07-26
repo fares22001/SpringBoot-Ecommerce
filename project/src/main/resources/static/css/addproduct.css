@@ -1,0 +1,114 @@
+body {
+    background-color: #f2f2f2; /* Set the background color to light grey */
+    background-image: url("p6.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Courier New', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  #content {
+    padding: 20px;
+  }
+  
+  #content nav {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  #content .head-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #content .form-data {
+    margin: 0 auto;
+    max-width: 700px; /* Increased container width */
+  }
+  
+  #content .order {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0.75;
+  }
+  
+  #content form input,
+  #content form select {
+    width: calc(100% - 10px);
+    height: 40px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    background-color: #f9f9f9; /* Set the background color of input fields */
+    color: #342E37; /* Adjust text color */
+    border-radius: 12px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  #content form input::placeholder,
+  #content form select {
+    color: #aaaaaa; /* Adjust placeholder color */
+  }
+  
+  #content form button[type="submit"] {
+    display: block; 
+    background: var(--blue);
+    color: var(--light);
+    padding: 16px 60px; 
+    font-size: 20px; 
+    border: none;
+    border-radius: 50px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 auto; 
+    width: fit-content; 
+  }
+  
+  #content form button[type="submit"]:hover {
+    background: var(--dark-blue);
+  }
+  
+  #content form label {
+    display: block;
+    margin-top: 20px;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  #content form .row {
+    display: flex;
+    margin-top: 20px;
+  }
+  
+  #content form .row .col-sm-4 {
+    flex: 0 0 40%;
+    max-width: 40%;
+    margin-right: 10px;
+  }
+  
+  #content form .row .col-sm-8 {
+    flex: 1;
+    max-width: calc(60% - 10px);
+  }
+  
+  #content form .row.mb-4 {
+    margin-bottom: 20px;
+  }
+  
+  #content form .image-upload input[type="file"] {
+    width: calc(100% - 10px);
+  }
+  
+  #content form .image-upload p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  

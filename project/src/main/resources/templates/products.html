@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" th:href="@{/css/adminDashboard.css}" />
+
+    <title>AdminHub</title>
+  </head>
+
+  <body>
+    <!-- SIDEBAR -->
+    <div th:replace="sidebar :: sidebar"></div>
+
+    <!-- SIDEBAR -->
+
+    <!-- CONTENT -->
+    <section id="content">
+      <!-- NAVBAR -->
+      <nav>
+        <i class="bx bx-menu"></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+          <div class="form-input">
+            <input type="search" placeholder="Search..." />
+            <button type="submit" class="search-btn">
+              <i class="bx bx-search"></i>
+            </button>
+          </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden />
+        <label for="switch-mode" class="switch-mode"></label>
+      </nav>
+      <!-- NAVBAR -->
+
+      <!-- MAIN -->
+      <main>
+        <div class="head-title">
+          <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+              <li>
+                <a href="#">Dashboard</a>
+              </li>
+              <li><i class="bx bx-chevron-right"></i></li>
+              <li>
+                <a class="active" href="#">products</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="table-data">
+          <div class="order">
+            <div class="head">
+              <h3>products</h3>
+              <i class="bx bx-search"></i>
+              <i class="bx bx-filter"></i>
+              <a href="/admin/products/addproduct">add product</a>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>id</th>
+                  <th>name</th>
+                  <th>brand</th>
+                  <th>category</th>
+                  <th>quantity</th>
+                  <th>description</th>
+                  <th>price</th>
+                   <th>regular disount</th>
+                  <th>image</th>
+                  <th>action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="product ,index :${products}">
+                  <td th:text="${index.index+1}"></td>
+                  <td th:text="${product.name}"></td>
+                  <td th:text="${product.brand}"></td>
+                  <td th:text="${product.category}"></td>
+                  <td th:text="${product.quantity}"></td>
+                  <td th:text="${product.description}"></td>
+                   <td th:text="${product.regularDiscount}"></td>
+
+                  <td th:text="${product.price + '$'}"></td>
+                  <td>
+                    <img
+                    th:if="${product.imageFileName != null and product.imageFileName.size() > 0}"
+                    th:src="@{'/uploads/' + ${product.id} + '/' + ${product.imageFileName[0]}}"
+                    th:alt="${product.imageFileName[0]}"
+                    width="100"
+                />
+                
+                  </td>
+                  <td style="white-space: nowrap">
+                    <a
+                      th:href="@{/admin/products/editProduct/{id}(id=${product.id})}"
+                      >edit</a
+                    >
+
+                    <a
+                      href="#"
+                      onclick="return confirm('Are you sure you want to delete?');"
+                      th:href="@{/admin/products/delete/{id}(id=${product.id})}"
+                    >
+                      Delete
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+      <!-- MAIN -->
+    </section>
+    <!-- CONTENT -->
+
+    <script src="../../public/js/adminDashboard.js"></script>
+  </body>
+</html>

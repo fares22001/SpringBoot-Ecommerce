@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products - Beauty Products</title>
+    <link th:href="@{/css/menu.css}" rel="stylesheet" />
+
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <link th:href="@{/css/footer.css}" rel="stylesheet" />
+    <script th:src="@{js/products.js}"></script>
+  </head>
+
+  <body>
+    <div th:replace="header :: header"></div>
+ 
+    <div id="menubody" onclick="favorites(event.target)">
+      <div class="menu_items" th:each="product : ${products}">
+        <img
+        th:if="${product.imageFileName != null and product.imageFileName.size() > 0}"
+        th:src="@{'/uploads/' + ${product.id} + '/' + ${product.imageFileName[0]}}"
+        th:alt="${product.imageFileName[0]}"
+        width="100"
+    />
+
+        <div class="descr_and_add">
+          <div class="description">
+            <span class="names" th:text="${product.name}"> </span>
+            <a class="view"
+              style="color: white"
+              href="#"
+              th:href="@{/admin/products/product-details/{id}(id=${product.id})}"
+            >
+              view product details
+            </a>         
+               <span th:text="${product.quantity}" > </span>
+               <span th:if="${product.quantity == 0}" style="color: red">Out of Stock</span>
+
+       
+            
+            <br />
+            <span class="prices" th:text="${product.price + '$'}"> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div th:replace="footer :: footer"></div>
+  </body>
+</html>

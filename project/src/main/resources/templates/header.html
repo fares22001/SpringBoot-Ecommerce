@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link th:href="@{/css/header.css}" rel="stylesheet" />
+    <title>YourStore - Online Shopping</title>
+    <style></style>
+  </head>
+
+  <body>
+    <header class="animated-header">
+      <div class="header-content">
+        <div class="logo">
+          <a th:href="@{/}" class="text-logo animated-text">Eama Group</a>
+        </div>
+        <nav class="navigation">
+          <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/menu">Products</a></li>
+            <th:block th:if="${session['username'] != null}">
+              <li><a href="/cart">Cart</a></li>
+              <li><a href="/Profile">UserProfile</a></li>              
+              <li><a th:href="@{/logout}">Logout</a></li>
+            </th:block>
+            <th:block th:unless="${session['username'] != null}">
+              <li><a href="/login">Login</a></li>
+              <li><a href="/Register">Register</a></li>
+
+            </th:block>
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>
