@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # SpringBoot-Ecommerce
-=======
+
 
 <p>Eama is a fancy online shop for beauty and wellness stuff. It has lots of makeup, skincare, dental care, and healthy products. You can shop from home and relax.
 The website is easy to use. It helps you find what you want with detailed info about each product. You can easily put things in your shopping cart, pay, and check out. Plus, you can make an account to keep track of your orders.
